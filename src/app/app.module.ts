@@ -22,7 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     FormsModule,          
     ReactiveFormsModule,  
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
