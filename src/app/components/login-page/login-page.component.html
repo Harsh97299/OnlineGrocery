@@ -1,0 +1,77 @@
+<!-- <div  class="container">
+ <div class="login-container">
+  <h2>Customer Login</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <label>Customer ID:</label>
+    <input type="text" formControlName="customerId" />
+
+    <label>Password:</label>
+    <input type="password" formControlName="password" />
+
+    <button type="submit">Login</button>
+  </form>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+ <div class="welcome">
+    <p>
+    New User? <button (click)="goToRegister()">Register Yourself</button>
+  </p>
+ </div>
+</div>
+
+</div> -->
+
+<div id="login-wrapper">
+<div class="wrapper">
+  <h2>Customer Login</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+    <!-- Customer ID Input -->
+    <div class="input-box">
+      <input
+        type="text"
+        placeholder="Customer ID"
+        formControlName="customerId"
+        required
+      />
+    </div>
+
+    <!-- Password Input -->
+    <div class="input-box">
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+        required
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <div class="input-box button">
+      <input type="submit" value="Login" />
+    </div>
+  </form>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Register Link -->
+  <div class="text">
+    <h3>
+      New User?
+    
+         <button (click)="goToRegister()">Register Yourself</button>    
+       
+      
+    </h3>
+    
+  </div>
+</div>
+</div>

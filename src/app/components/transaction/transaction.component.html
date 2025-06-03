@@ -1,0 +1,33 @@
+<div class="wrapper">
+<div class="transaction-container">
+  <h2>Select Payment Method</h2>
+  <div class="payment-options">
+    <label><input type="radio" name="payment" [(ngModel)]="paymentMethod" value="COD" /> COD</label>
+    <label><input type="radio" name="payment" [(ngModel)]="paymentMethod" value="UPI" /> UPI</label>
+    <label><input type="radio" name="payment" [(ngModel)]="paymentMethod" value="Credit Card" /> Credit Card</label>
+    <label><input type="radio" name="payment" [(ngModel)]="paymentMethod" value="Debit Card" /> Debit Card</label>
+    <label><input type="radio" name="payment" [(ngModel)]="paymentMethod" value="Net Banking" /> Net Banking</label>
+  </div>
+
+  <div class="price-summary">
+    <h3>Price Details</h3>
+    <p>Total Product Price: ₹{{ totalPrice }}</p>
+    <p>Total Discount: ₹{{ discount }}</p>
+    <p>GST: ₹{{ gst }}</p>
+    <p>Delivery Charges: ₹{{ delivery }}</p>
+    <h4>Order Total: ₹{{ orderTotal }}</h4>
+  </div>
+
+  <button (click)="proceedToBuy()" [disabled]="!paymentMethod">Proceed to Buy</button>
+
+  <div *ngIf="showInvoice" class="invoice">
+    <h3 style="color: green;">Order placed successfully!</h3>
+    <h4>Invoice</h4>
+    <p><strong>Transaction ID:</strong> {{ transactionId }}</p>
+    <p><strong>Customer ID:</strong> {{ customerId }}</p>
+    <p><strong>Product IDs:</strong> {{ productIds.join(', ') }}</p>
+    <p><strong>Total Amount:</strong> ₹{{ orderTotal }}</p>
+    <p><strong>Number of Items:</strong> {{ numberOfItems }}</p>
+  </div>
+</div>
+</div>

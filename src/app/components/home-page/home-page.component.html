@@ -1,0 +1,137 @@
+<nav class="navbar">
+   <input type="checkbox" id="chk1">
+  <div class="logo"><h1>Online Grocery</h1></div>
+  <div class="search-box">
+    <form action="">
+      <input type="text" name="search" id="srch" placeholder="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <ul>
+    <li><a (click)="toggleHome()">Home</a></li>
+    <li><a (click)="toggleProfile()">My Profile</a></li>
+    <li><a (click)="toggleCart()">Cart</a></li>
+    <li><a (click)="logout()">Logout</a></li>
+    <li>
+    <a href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+    <a href="#"><i class="fa fa-user"></i></a>
+    
+    </li>
+  </ul>
+  <div class="menu">
+    <label for="chk1">
+      <i class="fa fa-bars"></i>
+    </label>
+  </div>
+</nav>
+
+<!-- navbar ends here -->
+
+
+<section *ngIf="show" class="slider">
+   <div class="welcome" >
+    <h1>Your Favorite Online Grocery Destination</h1>
+    <p>We are your one-stop shop for fresh groceries, pantry staples, <br>and all your daily needs—delivered right to your door.
+      <br>No lines. 
+      No hassle. Just quality products and great prices</p>
+      <button class="button"> Shop Now</button>
+   </div>
+  </section>
+
+
+  <!-- Features -->
+ <div *ngIf="show" class="feature-cards1">
+    <span><h1>OUR FEATURES</h1></span>
+ </div>
+ <div  *ngIf="show"class="feature-cards">  
+    <div class="fc">
+<img src="https://thumbs.dreamstime.com/b/healthy-organic-food-grown-local-farm-happy-farmer-holding-basket-full-fresh-vegetables-vector-illustration-happy-farmer-371187082.jpg">
+        <h3>Fresh and Organic</h3>
+    </div>
+    <div class="fc">
+        <img  src="https://www.shutterstock.com/image-vector/smiling-young-man-headphones-microphone-600nw-2213661961.jpg">
+                        <h3>24/7 Support</h3>      
+                                    </div>
+    <div class="fc">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4F8AdBhFeWvBCpNfXPGDWbC0olPNjMUvPvCYbvd6-ZYidRAzq6OcB9M_8Cz_VoqRb1cE&usqp=CAU">
+        <h3>Free delivery</h3>      
+            </div>     
+
+     <div class="fc">
+<img src="https://img.freepik.com/free-vector/hand-drawn-installment-illustration_23-2149397096.jpg?semt=ais_hybrid&w=740">
+        <h3>Easy Payments</h3>        
+        </div>      
+ </div>
+ <!-- feature end -->
+  <section *ngIf="show" class="advertise">
+    <div class="adv">
+    <h1>Click, cart, done— <br>modern shopping <br>made simple.</h1>
+    <p>Because even grocery shopping deserves a digital upgrade.</p>
+      </div>  
+    
+  </section>
+<!-- <div class="header">
+  <h2>Hello, {{ user.name }}! Welcome to Online Grocery Store</h2>
+</div> -->
+
+<div *ngIf="showUpdateProfile" class="profile-section">
+  <h3>Update data</h3>
+  <label>Name: <input [(ngModel)]="user.name" /></label>
+  <label>Email: <input [(ngModel)]="user.email" /></label>
+  <label>Address: <input [(ngModel)]="user.address" /></label>
+  <label>Contact: <input [(ngModel)]="user.contactNumber" /></label>
+  <button (click)="updateProfile()">Save</button>
+</div>
+
+<div *ngIf="showProfile" class="profile-section">
+  <h3>My Profile</h3>
+  <label>Name: {{user.userName}}</label>
+  <label>Email: {{user.userEmail}}</label>
+  <label>Address: {{user.userAddress}}</label>
+  <label>Contact: {{user.userContact}}</label>
+  <button (click)="toggleUpdateProfile()">Update Profile Details</button>
+</div>
+
+<div *ngIf="showCart" class="cart-section">
+  <div class="cart-left">
+    <h3>Items in Cart</h3>
+    <div *ngFor="let item of cart">
+      <p>{{ item.name }} - ₹{{ item.price }}
+        <button (click)="removeItem(item.id)">Delete</button>
+      </p>
+    </div>
+  </div>
+  <div class="cart-right">
+    <h3>Summary</h3>
+    <p>Total: ₹{{ getTotalPrice() }}</p>
+    <button (click)="checkout()">Checkout</button>
+  </div>
+</div>
+
+<div *ngIf="showInvoice" class="invoice">
+  <p class="success-message">{{ successMessage }}</p>
+  <h4>Invoice</h4>
+  <pre>{{ invoiceData | json }}</pre>
+</div>
+
+<div *ngIf="!showProfile && !showCart && !showInvoice" class="products">
+  <h3>Available Products</h3>
+  <div *ngFor="let product of products" class="product-card">
+    <p>{{ product.name }}</p>
+    <p>₹{{ product.price }}</p>
+    <button (click)="addToCart(product)">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Footer Start -->
+<footer [ngStyle]="display()"  class="footer">
+
+  <div class="footer-content">
+    <p>&copy; 2025 Online Grocery. All rights reserved.</p>
+    <p>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Service</a> |
+      <a href="#">Contact Us</a>
+    </p>
+  </div>
+</footer>

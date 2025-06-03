@@ -1,0 +1,57 @@
+<div id="Registration-wrapper">
+<div class="wrapper">
+
+  <h2>Customer Registration</h2>
+
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <!-- Name -->
+    <div class="input-box">
+      <input type="text" placeholder="Name" formControlName="userName" />
+    </div>
+    <h3 *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched">
+      Name must contain only alphabets.
+    </h3>
+
+    <!-- Email -->
+    <div class="input-box">
+      <input type="email" placeholder="Email" formControlName="userEmail" />
+    </div>
+    <h3 *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+      Please enter a valid email.
+    </h3>
+
+    <!-- Password -->
+    <div class="input-box">
+      <input type="password" placeholder="Password" formControlName="userPassword" />
+    </div>
+    <h3 *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
+      Password must be at least 5 characters long and contain an uppercase letter, number, and special character.
+    </h3>
+
+    <!-- Address -->
+    <div class="input-box">
+      <input type="text" placeholder="Address" formControlName="userAddress" />
+    </div>
+    <h3 *ngIf="registrationForm.get('address')?.invalid && registrationForm.get('address')?.touched">
+      Address cannot be blank.
+    </h3>
+
+    <!-- Contact Number -->
+    <div class="input-box">
+      <input type="text" placeholder="Contact Number" formControlName="userContact" />
+    </div>
+    <h3 *ngIf="registrationForm.get('contactNumber')?.invalid && registrationForm.get('contactNumber')?.touched">
+      Contact number must contain only digits.
+    </h3>
+
+    <!-- Submit Button -->
+    <div class="input-box button">
+      <input type="submit" value="Register" />
+    </div>
+  </form>
+
+  <div *ngIf="confirmationMessage" class="confirmation">
+    {{ confirmationMessage }}
+  </div>
+</div>
+</div>
